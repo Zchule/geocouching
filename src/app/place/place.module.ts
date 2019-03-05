@@ -10,7 +10,7 @@ import { PlacePage } from './place.page';
 const routes: Routes = [
   {
     path: '',
-    component: PlacePage
+    component: PlacePage,
   }
 ];
 

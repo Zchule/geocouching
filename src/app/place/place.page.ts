@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-place',
   templateUrl: './place.page.html',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlacePage implements OnInit {
 
-  constructor() { }
+  nombreLugar = '';
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.nombreLugar = this.route.snapshot.paramMap.get('id');
   }
 
 }

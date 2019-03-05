@@ -10,13 +10,12 @@ import { Router } from '@angular/router';
 export class HomePage {
 
   constructor(
-    private navCtrl: NavController,
     private router: Router
   ) {
 
   }
 
-  navPlace() {
-    this.router.navigate(['tabs/place']);
+  navPlace(id) {
+    this.router.navigate([`tabs/place/${id}`]);
   }
 }

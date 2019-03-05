@@ -17,6 +17,15 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'place/:id',
+        children: [
+          {
+            path: '',
+            loadChildren: '../place/place.module#PlacePageModule'
+          }
+        ]
+      },
+      {
         path: 'perfil',
         children: [
           {
