@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +11,12 @@ export class HomePage {
 
   constructor(
     private navCtrl: NavController,
+    private router: Router
   ) {
 
   }
 
-  // navPlace() {
-  //   // this.navCtrl.navigateRoot('place');
-  // }
+  navPlace() {
+    this.router.navigate(['tabs/place']);
+  }
 }
