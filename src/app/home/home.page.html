@@ -1,24 +1,25 @@
 <ion-header>
-  <ion-toolbar color="tertiary">
+  <ion-toolbar color="secondary">
     <ion-title>
-      Ionic Blank
+      Lugares
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-button color="danger" (click)="navPlace(1)">Navegar 1er Lugar</ion-button>
-  <ion-button color="danger" (click)="navPlace(2)">Navegar 2do Lugar</ion-button>
-  <p text-center>texto centrado</p>
-  <p text-right>texto derecha</p>
-  <p text-left>texto izquierda</p>
-  <p text-uppercase>texto mayuscula</p>
-  <p text-lowercase>TEXTO MINUSCULA</p>
-  <p text-capitalize>texto con pura minusula</p>
-  <p text-wrap>For example, on a route with a paginated list, the URL might look like the following to indicate that we've loaded the second pag</p>
-  <p text-nowrap>For example, on a route with a paginated list, the URL might look like the following to indicate that we've loaded the second pag</p>
-</ion-content>
+  <ion-list>
+    <ion-item *ngFor="let lugar of lugares">
+      <ion-label>{{ lugar.nombre }}
+          <h5>{{ lugar.direccion }}</h5>
+          <p>{{ lugar.categoria }}</p>
+      </ion-label>
+      
+    </ion-item>
+  </ion-list>
 
-<ion-footer>
-  <p>hola desde el footer</p>
-</ion-footer>
+  <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button left color="secondary">
+        <ion-icon name="settings"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>
