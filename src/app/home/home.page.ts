@@ -9,11 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  lugares: any = [
-    {nombre: 'nombre1', direccion: 'direcion1', categoria: 'categoria1'},
-    {nombre: 'nombre2', direccion: 'direcion2', categoria: 'categoria2'},
-    {nombre: 'nombre3', direccion: 'direcion3', categoria: 'categoria3'}
-  ];
+  lugares: any = [];
 
   constructor(
     private router: Router

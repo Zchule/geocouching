@@ -8,20 +8,22 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <ion-label type='text' position="floating">nombre</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label type='text' position="floating">Direccion</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
+  <form novalidate [formGroup]="form">
+      <div class="form-group">
+    <ion-item>
+      <ion-label position="floating">nombre</ion-label>
+      <ion-input type='text' class="form-control" formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Direccion</ion-label>
+      <ion-input type='text' class="form-control" formControlName="direccion"></ion-input>
+    </ion-item>
 
-  <ion-list>
-      <ion-list-header>Single Selection</ion-list-header>
+    <ion-list>
+      <ion-list-header>Selection</ion-list-header>
       <ion-item>
         <ion-label>Categoria</ion-label>
-        <ion-select placeholder="libre">
+        <ion-select placeholder="libre" class="form-control" formControlName="categoria">
           <ion-select-option value="libre">Libre</ion-select-option>
           <ion-select-option value="cerrada">Cerrada</ion-select-option>
         </ion-select>
@@ -30,8 +32,10 @@
 
     <ion-item>
       <ion-label position="stacked">Descripcion</ion-label>
-      <ion-textarea placeholder="Description"></ion-textarea>
+      <ion-textarea placeholder="Descripcion" class="form-control" formControlName="descripcion"></ion-textarea>
     </ion-item>
 
-    <ion-button expand="block" shape="round">Guardar nota</ion-button>
+    <ion-button expand="block" shape="round" [disabled]="form.invalid" (click)="savePlace($event)">Guardar nota</ion-button>
+    </div>
+  </form>
 </ion-content>
