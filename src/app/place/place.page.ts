@@ -7,13 +7,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PlacePage implements OnInit {
 
-  nombreLugar = '';
   constructor(
     private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.nombreLugar = this.route.snapshot.paramMap.get('id');
+    // this.nombreLugar = this.route.snapshot.paramMap.get('id');
   }
 
 }

@@ -20,7 +20,12 @@ export class HomePage {
   ) {
   }
 
-  navPlace(id) {
+  navPlace(lugar) {
+    const id = '2';
     this.router.navigate([`tabs/place/${id}`]);
+  }
+
+  CrearLugar() {
+    this.router.navigate([`tabs/place`]);
   }
 }

@@ -8,5 +8,30 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>{{nombreLugar}}</h1>
+  <ion-item>
+    <ion-label type='text' position="floating">nombre</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label type='text' position="floating">Direccion</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+
+  <ion-list>
+      <ion-list-header>Single Selection</ion-list-header>
+      <ion-item>
+        <ion-label>Categoria</ion-label>
+        <ion-select placeholder="libre">
+          <ion-select-option value="libre">Libre</ion-select-option>
+          <ion-select-option value="cerrada">Cerrada</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label position="stacked">Descripcion</ion-label>
+      <ion-textarea placeholder="Description"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" shape="round">Guardar nota</ion-button>
 </ion-content>

@@ -8,7 +8,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let lugar of lugares">
+    <ion-item *ngFor="let lugar of lugares" (click)="navPlace(lugar)">
       <ion-label>{{ lugar.nombre }}
           <h5>{{ lugar.direccion }}</h5>
           <p>{{ lugar.categoria }}</p>
@@ -18,8 +18,8 @@
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end">
-      <ion-fab-button left color="secondary">
-        <ion-icon name="settings"></ion-icon>
+      <ion-fab-button left color="secondary" (click)="navPlace(lugar)">
+        <ion-icon name="add-circle"></ion-icon>      
       </ion-fab-button>
     </ion-fab>
 </ion-content>
