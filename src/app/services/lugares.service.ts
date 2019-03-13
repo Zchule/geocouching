@@ -12,7 +12,7 @@ export class LugaresService {
   }
 
   public getLugar(id) {
-    return this.afDB.database.ref('/lugares/' + id);
+    return this.afDB.object('/lugares/' + id).valueChanges();
   }
 
   public createLugar(lugar) {
@@ -20,6 +20,7 @@ export class LugaresService {
   }
 
   public editLugar(lugar) {
+    console.log(lugar);
     return this.afDB.database.ref('/lugares/' + lugar.id).set(lugar);
   }
 

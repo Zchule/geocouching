@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { LugaresService } from '../services/lugares.service';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -12,16 +14,24 @@ export class HomePage {
   lugares: any = [];
 
   constructor(
-    private router: Router
+    private router: Router,
+    private lugarService: LugaresService
   ) {
+    this.lugarService.getLugares().snapshotChanges()
+    .pipe(
+      map(actions => actions.map( item  => item.payload.val()))
+    )
+    .subscribe((places) => {
+      this.lugares = places;
+      }
+    );
   }
 
   navPlace(lugar) {
-    const id = '2';
-    this.router.navigate([`tabs/place/${id}`]);
+    this.router.navigate([`tabs/place/${lugar.id}`]);
   }
 
-  CrearLugar() {
+  createPlace() {
     this.router.navigate([`tabs/place`]);
   }
 }

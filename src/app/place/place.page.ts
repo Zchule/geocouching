@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { LugaresService } from '../services/lugares.service';
 @Component({
@@ -9,19 +9,30 @@ import { LugaresService } from '../services/lugares.service';
 })
 export class PlacePage implements OnInit {
 
-  lugar: any = {};
+  lugar: any = null;
   form: FormGroup;
+  id: any = null;
 
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private lugarService: LugaresService
+    private lugarService: LugaresService,
+    private router: Router
   ) {
+    this.form = this.buildForm();
+    this.id = this.route.snapshot.paramMap.get('id');
+    if ((this.id !== undefined) || (this.id !== null) ) {
+      this.lugar = this.lugarService.getLugar(this.id)
+      .subscribe((data: any) => {
+         this.lugar = data;
+         this.form.patchValue(this.lugar);
+      });
+    } else {
+      this.form = this.buildForm();
+    }
    }
 
   ngOnInit() {
-    this.form = this.buildForm();
-    // this.nombreLugar = this.route.snapshot.paramMap.get('id');
   }
 
   private buildForm() {
@@ -33,12 +44,23 @@ export class PlacePage implements OnInit {
     });
   }
 
-  savePlace($event: Event) {
-    $event.preventDefault();
-    console.log(this.form.value);
+  editPlace(lugar) {
     this.lugar = this.form.value;
-    this.lugar.id = Date.now();
-    this.lugarService.createLugar(this.lugar);
+    this.lugar.id = this.id;
+    this.lugarService.editLugar(this.lugar);
+    this.router.navigate([`home`]);
+  }
+
+  savePlace() {
+    if (this.id === null) {
+      this.lugar = this.form.value;
+      this.lugar.id = Date.now();
+      console.log(this.lugar);
+      this.lugarService.createLugar(this.lugar);
+      this.router.navigate([`home`]);
+    } else {
+      this.editPlace(this.lugar);
+    }
   }
 
 }
