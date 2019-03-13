@@ -34,4 +34,9 @@ export class HomePage {
   createPlace() {
     this.router.navigate([`tabs/place`]);
   }
+
+  removePlace(lugar) {
+    this.lugarService.deleteLugar(lugar);
+    this.router.navigate([`home`]);
+  }
 }
